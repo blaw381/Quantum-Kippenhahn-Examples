@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     47710,       1250]
-NotebookOptionsPosition[     47154,       1228]
-NotebookOutlinePosition[     47808,       1252]
-CellTagsIndexPosition[     47765,       1249]
+NotebookDataLength[     47648,       1249]
+NotebookOptionsPosition[     47092,       1227]
+NotebookOutlinePosition[     47746,       1251]
+CellTagsIndexPosition[     47703,       1248]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -36,11 +36,10 @@ Cell[BoxData[
      "can", " ", "be", " ", "downloaded", " ", "freely", " ", "at", " ", 
      RowBox[{
       RowBox[{
-       RowBox[{"www2", ".", "macaulay2", ".", "com"}], "/", "Macaulay2"}], 
-      "/", " ", "or"}], " ", "run", " ", "in", " ", "a", " ", "web", " ", 
-     "browser", " ", "at", " ", 
-     RowBox[{"web", ".", "macaulay2", ".", "com"}]}]}], "  ", "*)"}], 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"www2", ".", "macaulay2", ".", "com"}], "/", "Macaulay2"}], 
+       "/", "Downloads"}], "/"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{
    RowBox[{
     RowBox[{"mf", "=", "MatrixForm"}], ";"}], "\[IndentingNewLine]", 
@@ -1100,7 +1099,7 @@ equal to zero. This will mean by an appropriate chose of s we can ensure that \
 the discriminant of the characteristic polynomial of M cannot be zero, and so \
 M and thus L cannot have any repeated eigenvalues. First we will perform the \
 same change of variables \[Xi]\[Rule]a, y\[Rule]b as with q and r, and \
-prepare p2, p3, and p4 for entrance into Macaulay2.\>\"", "]"}], ";"}], 
+prepare p2, p3, and p4 for entering into Macaulay2.\>\"", "]"}], ";"}], 
    "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"Print", "[", "\"\<\\n\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
@@ -1188,7 +1187,7 @@ least one of s = 2, 3, or 4. Therefore no matter what values of the \
 counterexample parameters are chosen, we can select non-commutative variables \
 sX and Y such that L as defined in the main body of the paper has all simple \
 eigenvalues.\>\"", "]"}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]",
-    "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]",
+    "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", "\[IndentingNewLine]",
     "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
    "\[IndentingNewLine]"}]}]], "Input",
  PageWidth->PaperWidth,
@@ -1224,7 +1223,7 @@ eigenvalues.\>\"", "]"}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]",
    3.7656897718041964`*^9, 3.765689780818712*^9}, {3.7656898186808777`*^9, 
    3.765689852575816*^9}, {3.765690046078884*^9, 3.7656900802518387`*^9}, {
    3.7656915341229954`*^9, 3.765691617582769*^9}, {3.765692877519833*^9, 
-   3.7656928793189363`*^9}}]
+   3.7656928793189363`*^9}, {3.765697602588092*^9, 3.7656976226702404`*^9}}]
 },
 WindowSize->{1504, 730},
 WindowMargins->{{113, Automatic}, {Automatic, 9}},
@@ -1251,7 +1250,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 46592, 1206, 9727, "Input"]
+Cell[558, 20, 46530, 1205, 9687, "Input"]
 }
 ]
 *)
