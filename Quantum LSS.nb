@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     41895,       1115]
-NotebookOptionsPosition[     41339,       1093]
-NotebookOutlinePosition[     41993,       1117]
-CellTagsIndexPosition[     41950,       1114]
+NotebookDataLength[     41950,       1116]
+NotebookOptionsPosition[     41394,       1094]
+NotebookOutlinePosition[     42048,       1118]
+CellTagsIndexPosition[     42005,       1115]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1044,17 +1044,17 @@ counts is evaluating the Groebner basis of the ideal.\>\"", "]"}], ";"}],
     "Print", "[", 
      "\"\<The output is a Groebner basis for p2, p3, and p4. All of the terms \
 in this basis must vanish if p2, p3 and p4 are all to vanish. The first term \
-of which is a^3 bc - abc. This can only be zero if a = 0 or + /-1 or b or c = \
-0, but none of the conditions are permitted. Therefore, at least one of p2, \
-p3 or p4 must be non-zero for any possible configuration of the variables. \
-The discriminant of M and thus L is therefore shown to be non-zero for at \
-least one of s = 2, 3, or 4. Therefore no matter what values of the \
+of the basis is a^3 bc - abc. This can only be zero if a = 0 or + /-1 or b or \
+c = 0, but none of the conditions are permitted. Therefore, at least one of \
+p2, p3 or p4 must be non-zero for any possible configuration of the \
+variables. The discriminant of M and thus L is therefore shown to be non-zero \
+for at least one of s = 2, 3, or 4. Therefore no matter what values of the \
 counterexample parameters are chosen, we can select non-commutative variables \
 sX and Y such that L as defined in the main body of the paper has all simple \
-eigenvalues.\>\"", "]"}], ";"}], "\[IndentingNewLine]", "\n", 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-   "\[IndentingNewLine]", "\[IndentingNewLine]"}]}]], "Input",
+eigenvalues.\>\"", "]"}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]",
+    "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]"}]}]], "Input",
  PageWidth->PaperWidth,
  CellChangeTimes->{{3.7274969443995175`*^9, 3.7274969666657915`*^9}, {
    3.727497438929803*^9, 3.7274974462132196`*^9}, {3.727497703511936*^9, 
@@ -1089,7 +1089,8 @@ eigenvalues.\>\"", "]"}], ";"}], "\[IndentingNewLine]", "\n",
    3.765689852575816*^9}, {3.765690046078884*^9, 3.7656900802518387`*^9}, {
    3.7656915341229954`*^9, 3.765691617582769*^9}, {3.765692877519833*^9, 
    3.7656928793189363`*^9}, {3.765697602588092*^9, 3.7656976226702404`*^9}, {
-   3.7656983754082947`*^9, 3.765698375796317*^9}}]
+   3.7656983754082947`*^9, 3.765698375796317*^9}, {3.7657002833664236`*^9, 
+   3.76570028487251*^9}}]
 },
 WindowSize->{1504, 730},
 WindowMargins->{{113, Automatic}, {Automatic, 9}},
@@ -1116,7 +1117,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 40777, 1071, 8727, "Input"]
+Cell[558, 20, 40832, 1072, 8727, "Input"]
 }
 ]
 *)
