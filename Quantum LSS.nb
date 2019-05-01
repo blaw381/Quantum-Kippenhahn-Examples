@@ -1,0 +1,1123 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     41895,       1115]
+NotebookOptionsPosition[     41339,       1093]
+NotebookOutlinePosition[     41993,       1117]
+CellTagsIndexPosition[     41950,       1114]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "This", " ", "program", " ", "demonstrates", " ", "the", " ", 
+     "quantisation", " ", "of", " ", "the", " ", "Kippenhahn", " ", 
+     "counterexample", " ", "of", " ", "Li"}], ",", " ", "Spitkivsky", ",", 
+    " ", 
+    RowBox[{"and", " ", 
+     RowBox[{"Shukla", ".", " ", "Execute"}], " ", "the", " ", "program", " ",
+      "to", " ", "obtain", " ", "annotated", " ", "output"}], ",", " ", 
+    RowBox[{
+    "and", " ", "some", " ", "lines", " ", "of", " ", "Macaulay2", " ", 
+     RowBox[{"code", ".", " ", "The"}], " ", "Macaulay2", " ", "system", " ", 
+     "can", " ", "be", " ", "downloaded", " ", "freely", " ", "at", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"www2", ".", "macaulay2", ".", "com"}], "/", "Macaulay2"}], 
+       "/", "Downloads"}], "/"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"mf", "=", "MatrixForm"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sf", "=", "Simplify"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"fsf", "=", "FullSimplify"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"fs", "=", "fsf"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"cf", "=", "ColumnForm"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"mL", "[", "f_", "]"}], ":=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Inner", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"#2", "^", "#1"}], "&"}], ",", 
+         RowBox[{"First", "/@", 
+          RowBox[{"CoefficientRules", "[", 
+           RowBox[{"#1", ",", "#2"}], "]"}]}], ",", "#2", ",", "Times"}], 
+        "]"}], "&"}], "[", 
+      RowBox[{"f", ",", 
+       RowBox[{"Variables", "[", "f", "]"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", "X", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", "Y", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", "H", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", "K", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", "A", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", "L", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"A", " ", "=", " ", 
+     RowBox[{"(", GridBox[{
+        {"0", "x", "0", 
+         RowBox[{"c", " ", "y"}], "0", "0"},
+        {"0", "0", "y", "0", "0", "0"},
+        {"0", "0", "0", "0", "0", "0"},
+        {"0", "0", 
+         RowBox[{
+          RowBox[{"-", "c"}], " ", "x"}], "0", 
+         RowBox[{"\[Xi]", " ", 
+          RowBox[{"Sqrt", "[", 
+           RowBox[{"1", "-", 
+            RowBox[{"c", "^", "2"}]}], "]"}]}], "0"},
+        {"0", "0", "0", "0", "0", "\[Eta]"},
+        {"0", "0", "0", "0", "0", "0"}
+       }], ")"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"H", " ", "=", " ", 
+     RowBox[{"A", " ", "+", " ", 
+      RowBox[{"Transpose", "[", "A", "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"K", " ", "=", " ", 
+     RowBox[{"Simplify", "[", 
+      RowBox[{
+       RowBox[{"-", "I"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"2", "A"}], " ", "-", " ", "H"}], ")"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<Here we have A, where x, y, \[Xi], \[Eta], c > 0, and x^2 + y^2 = \
+\[Xi]^2 + \[Eta]^2 = 1, c < 1/2\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"MatrixForm", "[", "A", "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<Define H = A + A^T\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"MatrixForm", "[", "H", "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<And K via 2A = H + i K\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"MatrixForm", "[", "K", "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<Now define hermitian X\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"X", " ", "=", " ", 
+     RowBox[{"(", GridBox[{
+        {"0", "1"},
+        {"1", "0"}
+       }], ")"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"MatrixForm", "[", "X", "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<and Y\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Y", " ", "=", " ", 
+     RowBox[{"(", GridBox[{
+        {"0", "I"},
+        {
+         RowBox[{"-", "I"}], "0"}
+       }], ")"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"MatrixForm", "[", "Y", "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"L", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"KroneckerProduct", "[", 
+       RowBox[{
+        RowBox[{"s", " ", "X"}], ",", "H"}], "]"}], " ", "+", " ", 
+      RowBox[{"KroneckerProduct", "[", 
+       RowBox[{"Y", ",", "K"}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"L", "//", "mf"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", " ", "[", " ", 
+     "\"\<and L = X\[CircleTimes]H + Y\[CircleTimes]K, which is composed of \
+complex conjugate blocks M and M^t, where M is given by\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"M", "=", 
+     RowBox[{"L", "[", 
+      RowBox[{"[", 
+       RowBox[{
+        RowBox[{"1", ";;", "6"}], ",", 
+        RowBox[{"7", ";;", "12"}]}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"M", "//", "mf"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<Eigenvalues of L will be + /- sqrt[eigenvalues of M M^t\>\"", "]"}],
+     ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<The determinant of M is shown below, and is non-zero for tha range \
+of variables we are considering:\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{
+      RowBox[{"Det", "[", "M", "]"}], "//", "Factor"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", "\"\<We will evaluate M M^t for various values of s.\>\"", 
+     "]"}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<\\n\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<Now try s = 2. M M^t =\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"M2", "=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"M", ".", 
+         RowBox[{"Transpose", "[", "M", "]"}]}], ")"}], "/.", 
+       RowBox[{"{", 
+        RowBox[{"s", "\[Rule]", "2"}], "}"}]}], "//", "sf"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"M2", "//", "mf"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<Rearrange:\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"M2", "=", 
+     RowBox[{
+      RowBox[{"Transpose", "[", 
+       RowBox[{"M2", "[", 
+        RowBox[{"[", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", "3", ",", "5", ",", "2", ",", "4", ",", "6"}], 
+          "}"}], "]"}], "]"}], "]"}], "[", 
+      RowBox[{"[", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3", ",", "5", ",", "2", ",", "4", ",", "6"}], 
+        "}"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"M2", " ", "//", " ", "mf"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<Its characteristic polynomial, c2:\>\"", "]"}],
+     ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"c2", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"CharacteristicPolynomial", "[", 
+       RowBox[{"M2", ",", "t"}], "]"}], "//", "Factor"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "c2", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<Now we take the discrimnant d2 of c2, and simplify with what we \
+know about x, y, \[Eta], and \[Xi]. We will arrange the factors p2, q2, and \
+r2 of d2 in a column, and deal with each in turn:\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"d2", "=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Discriminant", "[", 
+        RowBox[{"c2", ",", "t"}], "]"}], "//", "sf"}], "//", "Factor"}]}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"d2", "=", 
+     RowBox[{
+      RowBox[{"sf", "[", 
+       RowBox[{"d2", "/.", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"x", "^", "k_"}], "\[RuleDelayed]", 
+           RowBox[{
+            RowBox[{"Sqrt", "[", 
+             RowBox[{"1", "-", 
+              RowBox[{"y", "^", "2"}]}], "]"}], "^", "k"}]}], ",", 
+          RowBox[{
+           RowBox[{"\[Eta]", "^", "l_"}], "\[Rule]", 
+           RowBox[{
+            RowBox[{"Sqrt", "[", 
+             RowBox[{"1", "-", " ", 
+              RowBox[{"\[Xi]", "^", "2"}]}], "]"}], "^", "l"}]}]}], "}"}]}], 
+       "]"}], "//", "Factor"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"bads2", "=", 
+     RowBox[{"Drop", "[", 
+      RowBox[{
+       RowBox[{"Map", "[", 
+        RowBox[{"First", ",", 
+         RowBox[{"FactorList", "[", "d2", "]"}]}], "]"}], ",", "6"}], "]"}]}],
+     ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<p2:\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"p2", " ", "=", " ", 
+     RowBox[{"bads2", "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "p2", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<q2:\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"q2", " ", "=", " ", 
+     RowBox[{"bads2", "[", 
+      RowBox[{"[", "2", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"bads2", "[", 
+      RowBox[{"[", "2", "]"}], "]"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<r2:\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"r2", " ", "=", " ", 
+     RowBox[{"bads2", "[", 
+      RowBox[{"[", "3", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"bads2", "[", 
+      RowBox[{"[", "3", "]"}], "]"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<\\n\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<Let's look for zeros of q2 in the domain of interest. First we will \
+change variables in q2 as c^k \[RuleDelayed]c^(k/2), y^l \
+\[RuleDelayed]a^(l/2), \[Xi]^m \[RuleDelayed]b^(m/2)\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"q2", "=", 
+     RowBox[{"q2", "/.", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"c", "^", "k_"}], "\[RuleDelayed]", 
+         RowBox[{"c", "^", 
+          RowBox[{"(", 
+           RowBox[{"k", "/", "2"}], ")"}]}]}], ",", 
+        RowBox[{
+         RowBox[{"y", "^", "l_"}], "\[RuleDelayed]", 
+         RowBox[{"a", "^", 
+          RowBox[{"(", 
+           RowBox[{"l", "/", "2"}], ")"}]}]}], ",", 
+        RowBox[{
+         RowBox[{"\[Xi]", "^", "m_"}], "\[RuleDelayed]", 
+         RowBox[{"b", "^", 
+          RowBox[{"(", 
+           RowBox[{"m", "/", "2"}], ")"}]}]}]}], "}"}]}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "q2", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<Now use the Reduce command to look for zeros of this reduced q2 in \
+the domain of interest:\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"Reduce", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"q2", "<=", "0"}], ",", 
+         RowBox[{"a", ">", "0"}], ",", 
+         RowBox[{"b", ">", "0"}], ",", 
+         RowBox[{"c", ">", "0"}], ",", 
+         RowBox[{"1", ">", "a"}], ",", 
+         RowBox[{"1", ">", "b"}], ",", 
+         RowBox[{"1", ">", "c"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<No such zeros exist\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<\\n\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<Now we shall look for zeros of r2 in the domain of interest. First \
+we will change variables in r2 as c^k \[RuleDelayed]c^(k/2), y^l \
+\[RuleDelayed]a^(l/2), \[Xi]^m \[RuleDelayed]b^(m/2)\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"r2", "=", 
+     RowBox[{"r2", "/.", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"c", "^", "k_"}], "\[RuleDelayed]", 
+         RowBox[{"c", "^", 
+          RowBox[{"(", 
+           RowBox[{"k", "/", "2"}], ")"}]}]}], ",", 
+        RowBox[{
+         RowBox[{"y", "^", "l_"}], "\[RuleDelayed]", 
+         RowBox[{"a", "^", 
+          RowBox[{"(", 
+           RowBox[{"l", "/", "2"}], ")"}]}]}], ",", 
+        RowBox[{
+         RowBox[{"\[Xi]", "^", "m_"}], "\[RuleDelayed]", 
+         RowBox[{"b", "^", 
+          RowBox[{"(", 
+           RowBox[{"m", "/", "2"}], ")"}]}]}]}], "}"}]}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "r2", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<Now use the Reduce command to look for zeros of this reduced r2 in \
+the domain of interest:\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"Reduce", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"r2", "<=", "0"}], ",", 
+         RowBox[{"a", ">", "0"}], ",", 
+         RowBox[{"b", ">", "0"}], ",", 
+         RowBox[{"c", ">", "0"}], ",", 
+         RowBox[{"1", ">", "a"}], ",", 
+         RowBox[{"1", ">", "b"}], ",", 
+         RowBox[{"1", ">", "c"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<No such zeros exist\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<\\n\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<The first factor, p2, will be dealt with at the end.\>\"", "]"}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<\\n\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<Now try s = 3. M M^t =\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"M3", "=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"M", ".", 
+         RowBox[{"Transpose", "[", "M", "]"}]}], ")"}], "/.", 
+       RowBox[{"{", 
+        RowBox[{"s", "\[Rule]", "3"}], "}"}]}], "//", "sf"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"M3", "//", "mf"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<Rearrange:\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"M3", "=", 
+     RowBox[{
+      RowBox[{"Transpose", "[", 
+       RowBox[{"M3", "[", 
+        RowBox[{"[", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", "3", ",", "5", ",", "2", ",", "4", ",", "6"}], 
+          "}"}], "]"}], "]"}], "]"}], "[", 
+      RowBox[{"[", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3", ",", "5", ",", "2", ",", "4", ",", "6"}], 
+        "}"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"M3", " ", "//", " ", "mf"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<Its characteristic polynomial, c3:\>\"", "]"}],
+     ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"c3", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"CharacteristicPolynomial", "[", 
+       RowBox[{"M3", ",", "t"}], "]"}], "//", "Factor"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "c3", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<Now we take the discrimnant d3 of c3, and simplify with what we \
+know about x, y, \[Eta], and \[Xi]. We will arrange the factors p3, q3, and \
+r3 of d3 in a column, and deal with each in turn:\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"d3", "=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Discriminant", "[", 
+        RowBox[{"c3", ",", "t"}], "]"}], "//", "sf"}], "//", "Factor"}]}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"d3", "=", 
+     RowBox[{
+      RowBox[{"sf", "[", 
+       RowBox[{"d3", "/.", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"x", "^", "k_"}], "\[RuleDelayed]", 
+           RowBox[{
+            RowBox[{"Sqrt", "[", 
+             RowBox[{"1", "-", 
+              RowBox[{"y", "^", "2"}]}], "]"}], "^", "k"}]}], ",", 
+          RowBox[{
+           RowBox[{"\[Eta]", "^", "l_"}], "\[Rule]", 
+           RowBox[{
+            RowBox[{"Sqrt", "[", 
+             RowBox[{"1", "-", " ", 
+              RowBox[{"\[Xi]", "^", "2"}]}], "]"}], "^", "l"}]}]}], "}"}]}], 
+       "]"}], "//", "Factor"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"bads3", "=", 
+     RowBox[{"Drop", "[", 
+      RowBox[{
+       RowBox[{"Map", "[", 
+        RowBox[{"First", ",", 
+         RowBox[{"FactorList", "[", "d3", "]"}]}], "]"}], ",", "6"}], "]"}]}],
+     ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<p3:\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"p3", " ", "=", " ", 
+     RowBox[{"bads3", "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "p3", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<q3:\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"q3", " ", "=", " ", 
+     RowBox[{"bads3", "[", 
+      RowBox[{"[", "2", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "q3", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<r3:\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"r3", " ", "=", " ", 
+     RowBox[{"bads3", "[", 
+      RowBox[{"[", "3", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "r3", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<\\n\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<Let's look for zeros of q3 in the domain of interest. First we will \
+change variables in q3 as c^k \[RuleDelayed]c^(k/2), y^l \
+\[RuleDelayed]a^(l/2), \[Xi]^m \[RuleDelayed]b^(m/2)\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"q3", "=", 
+     RowBox[{"q3", "/.", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"c", "^", "k_"}], "\[RuleDelayed]", 
+         RowBox[{"c", "^", 
+          RowBox[{"(", 
+           RowBox[{"k", "/", "2"}], ")"}]}]}], ",", 
+        RowBox[{
+         RowBox[{"y", "^", "l_"}], "\[RuleDelayed]", 
+         RowBox[{"a", "^", 
+          RowBox[{"(", 
+           RowBox[{"l", "/", "2"}], ")"}]}]}], ",", 
+        RowBox[{
+         RowBox[{"\[Xi]", "^", "m_"}], "\[RuleDelayed]", 
+         RowBox[{"b", "^", 
+          RowBox[{"(", 
+           RowBox[{"m", "/", "2"}], ")"}]}]}]}], "}"}]}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "q3", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<Now use the Reduce command to look for zeros of this reduced q3 in \
+the domain of interest:\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"Reduce", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"q3", "<=", "0"}], ",", 
+         RowBox[{"a", ">", "0"}], ",", 
+         RowBox[{"b", ">", "0"}], ",", 
+         RowBox[{"c", ">", "0"}], ",", 
+         RowBox[{"1", ">", "a"}], ",", 
+         RowBox[{"1", ">", "b"}], ",", 
+         RowBox[{"1", ">", "c"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<No such zeros exist\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<\\n\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<Now we shall look for zeros of r3 in the domain of interest. First \
+we will change variables in r3 as c^k \[RuleDelayed]c^(k/2), y^l \
+\[RuleDelayed]a^(l/2), \[Xi]^m \[RuleDelayed]b^(m/2)\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"r3", "=", 
+     RowBox[{"r3", "/.", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"c", "^", "k_"}], "\[RuleDelayed]", 
+         RowBox[{"c", "^", 
+          RowBox[{"(", 
+           RowBox[{"k", "/", "2"}], ")"}]}]}], ",", 
+        RowBox[{
+         RowBox[{"y", "^", "l_"}], "\[RuleDelayed]", 
+         RowBox[{"a", "^", 
+          RowBox[{"(", 
+           RowBox[{"l", "/", "2"}], ")"}]}]}], ",", 
+        RowBox[{
+         RowBox[{"\[Xi]", "^", "m_"}], "\[RuleDelayed]", 
+         RowBox[{"b", "^", 
+          RowBox[{"(", 
+           RowBox[{"m", "/", "2"}], ")"}]}]}]}], "}"}]}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "r3", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<Now use the Reduce command to look for zeros of this reduced r3 in \
+the domain of interest:\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"Reduce", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"r3", "<=", "0"}], ",", 
+         RowBox[{"a", ">", "0"}], ",", 
+         RowBox[{"b", ">", "0"}], ",", 
+         RowBox[{"c", ">", "0"}], ",", 
+         RowBox[{"1", ">", "a"}], ",", 
+         RowBox[{"1", ">", "b"}], ",", 
+         RowBox[{"1", ">", "c"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<No such zeros exist\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<\\n\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<The first factor, p3, will be dealt with at the end.\>\"", "]"}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<\\n\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<Now try s = 4. M M^t =\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"M4", "=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"M", ".", 
+         RowBox[{"Transpose", "[", "M", "]"}]}], ")"}], "/.", 
+       RowBox[{"{", 
+        RowBox[{"s", "\[Rule]", "4"}], "}"}]}], "//", "sf"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"M4", "//", "mf"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<Rearrange:\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"M4", "=", 
+     RowBox[{
+      RowBox[{"Transpose", "[", 
+       RowBox[{"M4", "[", 
+        RowBox[{"[", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", "3", ",", "5", ",", "2", ",", "4", ",", "6"}], 
+          "}"}], "]"}], "]"}], "]"}], "[", 
+      RowBox[{"[", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3", ",", "5", ",", "2", ",", "4", ",", "6"}], 
+        "}"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"M4", " ", "//", " ", "mf"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<Its characteristic polynomial, c4:\>\"", "]"}],
+     ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"c4", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"CharacteristicPolynomial", "[", 
+       RowBox[{"M4", ",", "t"}], "]"}], "//", "Factor"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "c4", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<Now we take the discrimnant d4 of c4, and simplify with what we \
+know about x, y, \[Eta], and \[Xi]. We will arrange the factors p4, q4, and \
+r4 of d4 in a column, and deal with each in turn:\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"d4", "=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Discriminant", "[", 
+        RowBox[{"c4", ",", "t"}], "]"}], "//", "sf"}], "//", "Factor"}]}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"d4", "=", 
+     RowBox[{
+      RowBox[{"sf", "[", 
+       RowBox[{"d4", "/.", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"x", "^", "k_"}], "\[RuleDelayed]", 
+           RowBox[{
+            RowBox[{"Sqrt", "[", 
+             RowBox[{"1", "-", 
+              RowBox[{"y", "^", "2"}]}], "]"}], "^", "k"}]}], ",", 
+          RowBox[{
+           RowBox[{"\[Eta]", "^", "l_"}], "\[Rule]", 
+           RowBox[{
+            RowBox[{"Sqrt", "[", 
+             RowBox[{"1", "-", " ", 
+              RowBox[{"\[Xi]", "^", "2"}]}], "]"}], "^", "l"}]}]}], "}"}]}], 
+       "]"}], "//", "Factor"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"bads4", "=", 
+     RowBox[{"Drop", "[", 
+      RowBox[{
+       RowBox[{"Map", "[", 
+        RowBox[{"First", ",", 
+         RowBox[{"FactorList", "[", "d4", "]"}]}], "]"}], ",", "6"}], "]"}]}],
+     ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<p4:\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"p4", " ", "=", " ", 
+     RowBox[{"bads4", "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "p4", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<q4:\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"q4", " ", "=", " ", 
+     RowBox[{"bads4", "[", 
+      RowBox[{"[", "2", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "q4", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<r4:\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"r4", " ", "=", " ", 
+     RowBox[{"bads4", "[", 
+      RowBox[{"[", "3", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "r4", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<\\n\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<Let's look for zeros of q4 in the domain of interest. First we will \
+change variables in q4 as c^k \[RuleDelayed]c^(k/2), y^l \
+\[RuleDelayed]a^(l/2), \[Xi]^m \[RuleDelayed]b^(m/2)\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"q4", "=", 
+     RowBox[{"q4", "/.", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"c", "^", "k_"}], "\[RuleDelayed]", 
+         RowBox[{"c", "^", 
+          RowBox[{"(", 
+           RowBox[{"k", "/", "2"}], ")"}]}]}], ",", 
+        RowBox[{
+         RowBox[{"y", "^", "l_"}], "\[RuleDelayed]", 
+         RowBox[{"a", "^", 
+          RowBox[{"(", 
+           RowBox[{"l", "/", "2"}], ")"}]}]}], ",", 
+        RowBox[{
+         RowBox[{"\[Xi]", "^", "m_"}], "\[RuleDelayed]", 
+         RowBox[{"b", "^", 
+          RowBox[{"(", 
+           RowBox[{"m", "/", "2"}], ")"}]}]}]}], "}"}]}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "q4", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<Now use the Reduce command to look for zeros of this reduced q4 in \
+the domain of interest:\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"Reduce", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"q4", "<=", "0"}], ",", 
+         RowBox[{"a", ">", "0"}], ",", 
+         RowBox[{"b", ">", "0"}], ",", 
+         RowBox[{"c", ">", "0"}], ",", 
+         RowBox[{"1", ">", "a"}], ",", 
+         RowBox[{"1", ">", "b"}], ",", 
+         RowBox[{"1", ">", "c"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<No such zeros exist\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<\\n\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<Now we shall look for zeros of r4 in the domain of interest. First \
+we will change variables in r4 as c^k \[RuleDelayed]c^(k/2), y^l \
+\[RuleDelayed]a^(l/2), \[Xi]^m \[RuleDelayed]b^(m/2)\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"r4", "=", 
+     RowBox[{"r4", "/.", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"c", "^", "k_"}], "\[RuleDelayed]", 
+         RowBox[{"c", "^", 
+          RowBox[{"(", 
+           RowBox[{"k", "/", "2"}], ")"}]}]}], ",", 
+        RowBox[{
+         RowBox[{"y", "^", "l_"}], "\[RuleDelayed]", 
+         RowBox[{"a", "^", 
+          RowBox[{"(", 
+           RowBox[{"l", "/", "2"}], ")"}]}]}], ",", 
+        RowBox[{
+         RowBox[{"\[Xi]", "^", "m_"}], "\[RuleDelayed]", 
+         RowBox[{"b", "^", 
+          RowBox[{"(", 
+           RowBox[{"m", "/", "2"}], ")"}]}]}]}], "}"}]}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "r4", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<Now use the Reduce command to look for zeros of this reduced r4 in \
+the domain of interest:\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"Reduce", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"r4", "<=", "0"}], ",", 
+         RowBox[{"a", ">", "0"}], ",", 
+         RowBox[{"b", ">", "0"}], ",", 
+         RowBox[{"c", ">", "0"}], ",", 
+         RowBox[{"1", ">", "a"}], ",", 
+         RowBox[{"1", ">", "b"}], ",", 
+         RowBox[{"1", ">", "c"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<No such zeros exist\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<\\n\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", "\"\<The first factor, p4, will be dealt with next.\>\"", 
+     "]"}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<\\n\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<Now collect p2, p3, and p4, and show via a Groebner basis that, no \
+matter what the values of parameters of the family of counterexamples, one of \
+the values of s = 2, 3, or 4 will ensure that one of p2, p3 or p4 cannot be \
+equal to zero. This will mean by an appropriate chose of s we can ensure that \
+the discriminant of the characteristic polynomial of M cannot be zero, and so \
+M and thus L cannot have any repeated eigenvalues. First we will perform the \
+same change of variables \[Xi]\[Rule]a, y\[Rule]b as with q and r, and \
+prepare p2, p3, and p4 for entering into Macaulay2.\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<\\n\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"p2", " ", "=", " ", 
+     RowBox[{"InputForm", "[", 
+      RowBox[{"p2", "/.", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"\[Xi]", "\[Rule]", "a"}], ",", 
+         RowBox[{"y", "\[Rule]", "b"}]}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"p3", "=", " ", 
+     RowBox[{"InputForm", "[", 
+      RowBox[{"p3", "/.", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"\[Xi]", "\[Rule]", "a"}], ",", 
+         RowBox[{"y", "\[Rule]", "b"}]}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"p4", " ", "=", " ", 
+     RowBox[{"InputForm", "[", 
+      RowBox[{"p4", "/.", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"\[Xi]", "\[Rule]", "a"}], ",", 
+         RowBox[{"y", "\[Rule]", "b"}]}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<\\n\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<The following code is then entered into Macaulay2. The first \
+command establishes that we are working over the ring of rational polynomials \
+in a, b, and c. The next three commands define p2, p3, and p4. The final \
+commands evaluate the Groebner basis of the ideal generated by p2, p3, and \
+p4. Any suitable computer alegbra system can be used for this step. What \
+counts is evaluating the Groebner basis of the ideal.\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<\\n\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<R = QQ[a, b, c];\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<p2 = \>\"", " ", "p2"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<p3 = \>\"", " ", "p3"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<p4 = \>\"", " ", "p4"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<I = ideal (p2, p3, p4);\>\"", "]"}], ";"}], 
+   "\n", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<r = radical I;\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<gens gb r\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", "\"\<\\n\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "Print", "[", 
+     "\"\<The output is a Groebner basis for p2, p3, and p4. All of the terms \
+in this basis must vanish if p2, p3 and p4 are all to vanish. The first term \
+of which is a^3 bc - abc. This can only be zero if a = 0 or + /-1 or b or c = \
+0, but none of the conditions are permitted. Therefore, at least one of p2, \
+p3 or p4 must be non-zero for any possible configuration of the variables. \
+The discriminant of M and thus L is therefore shown to be non-zero for at \
+least one of s = 2, 3, or 4. Therefore no matter what values of the \
+counterexample parameters are chosen, we can select non-commutative variables \
+sX and Y such that L as defined in the main body of the paper has all simple \
+eigenvalues.\>\"", "]"}], ";"}], "\[IndentingNewLine]", "\n", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]"}]}]], "Input",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.7274969443995175`*^9, 3.7274969666657915`*^9}, {
+   3.727497438929803*^9, 3.7274974462132196`*^9}, {3.727497703511936*^9, 
+   3.727497725121172*^9}, {3.7274978466421227`*^9, 3.7274980038211126`*^9}, {
+   3.7274983697750444`*^9, 3.7274984006728115`*^9}, {3.727498534530468*^9, 
+   3.727498800517681*^9}, {3.7274993458978753`*^9, 3.7274993843350735`*^9}, {
+   3.727499739778404*^9, 3.7274998058881855`*^9}, {3.727500131413804*^9, 
+   3.727500158820372*^9}, {3.727501359078023*^9, 3.727501366702459*^9}, {
+   3.7275014360294237`*^9, 3.7275014434558487`*^9}, {3.7275035816121445`*^9, 
+   3.727503605792527*^9}, {3.7275038307353935`*^9, 3.7275038377827964`*^9}, {
+   3.7275043379524045`*^9, 3.727504353313283*^9}, {3.7275048265423503`*^9, 
+   3.7275049682534556`*^9}, {3.7275050001752815`*^9, 
+   3.7275050729244423`*^9}, {3.7275051375811405`*^9, 
+   3.7275051383901873`*^9}, {3.727505323206758*^9, 3.7275053352674475`*^9}, {
+   3.7275053856873317`*^9, 3.727505441398518*^9}, {3.72750547290032*^9, 
+   3.727505667528452*^9}, {3.727505941887144*^9, 3.7275059419001455`*^9}, {
+   3.727506070862521*^9, 3.7275062086534023`*^9}, {3.727506284640749*^9, 
+   3.7275063306893826`*^9}, {3.727506389575751*^9, 3.7275066335397043`*^9}, {
+   3.72750672944519*^9, 3.7275067613520155`*^9}, {3.7275074651712713`*^9, 
+   3.727507545631873*^9}, {3.727507583700051*^9, 3.7275076143998065`*^9}, {
+   3.727507689059077*^9, 3.7275077468303814`*^9}, {3.7275079846909857`*^9, 
+   3.7275082079037533`*^9}, {3.763767218525134*^9, 3.7637672704601045`*^9}, 
+   3.7637673131055436`*^9, {3.763768136200622*^9, 3.7637681473562603`*^9}, {
+   3.763768208787774*^9, 3.763768210071847*^9}, 3.7637682806928864`*^9, {
+   3.7637684731348934`*^9, 3.763768476432082*^9}, {3.7637713278461733`*^9, 
+   3.7637713291882505`*^9}, {3.763771512650744*^9, 3.7637715184750767`*^9}, 
+   3.763771970984959*^9, {3.7637724632741165`*^9, 3.7637724776789403`*^9}, {
+   3.7637785697913895`*^9, 3.763778585172269*^9}, 3.763778833849492*^9, {
+   3.7640213121810465`*^9, 3.7640213458159704`*^9}, {3.764021381040985*^9, 
+   3.7640213987479978`*^9}, {3.76403211741407*^9, 3.76403217807554*^9}, {
+   3.7656897718041964`*^9, 3.765689780818712*^9}, {3.7656898186808777`*^9, 
+   3.765689852575816*^9}, {3.765690046078884*^9, 3.7656900802518387`*^9}, {
+   3.7656915341229954`*^9, 3.765691617582769*^9}, {3.765692877519833*^9, 
+   3.7656928793189363`*^9}, {3.765697602588092*^9, 3.7656976226702404`*^9}, {
+   3.7656983754082947`*^9, 3.765698375796317*^9}}]
+},
+WindowSize->{1504, 730},
+WindowMargins->{{113, Automatic}, {Automatic, 9}},
+PrintingCopies->1,
+PrintingPageRange->{32000, 32000},
+PrintingOptions->{"Magnification"->1.,
+"PaperOrientation"->"Portrait",
+"PaperSize"->{595.1999999999999, 841.68},
+"PrintCellBrackets"->False,
+"PrintMultipleHorizontalPages"->False,
+"PrintRegistrationMarks"->False,
+"PrintingMargins"->{{54, 54}, {72, 72}}},
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (January 25, 2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 40777, 1071, 8727, "Input"]
+}
+]
+*)
+
